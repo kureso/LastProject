@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[czech]{babel}
+\title{Výpočet vlastních čísel na oblasti obdelníka}
+\date{}
+\begin{document}
+\maketitle
+Začínám s rovnicí $\Delta u=-\lambda u$. Jelikož vím, že pracuji na oblasti obdelníka, mohu něco říct o závislosti x a y a přepsat $u(x,y)$ do pro nás výhodnějšího tvaru: $u(x,y)=X(x) Y(y)$ a po aplikaci Laplace mám rovnici:
+\begin{equation}
+   \frac{\partial^2 X}{\partial x^2} Y
+      + X \frac{\partial^2 Y}{\partial y^2}=-\lambda X Y
+ \end{equation}
+Tento tvar je již pro výpočty vhodnější, přičemž ho nadále upravíme do tvaru:
+\begin{equation}
+\frac {\frac{\partial^2 X}{\partial x^2}+\lambda X}{X}=\frac{-\frac{\partial^2 Y}{\partial y^2}}{Y}
+\end{equation}
+Jelikož levá strana je závislá na x a pravá na y, vyplývá nám z toho, že se obě strany rovnají stejné konstantě tj.:
+ \begin{equation}
+\frac {\frac{\partial^2 X}{\partial x^2}+\lambda X}{X}=\frac{-\frac{\partial^2 Y}{\partial y^2}}{Y}=\alpha
+\end{equation}
+Z této rovnice již snadno odvodíme systém dvou rovnic:
+\begin{subequations}
+\begin{equation}
+\frac{\partial^2 X}{\partial x^2}+(\lambda-\alpha)X=0
+\end{equation}
+\begin{equation}
+\frac{\partial^2 Y}{\partial y^2}+\alpha Y=0
+\end{equation}
+\end{subequations}
+Tyto rovnice snadno vyřešíme za pomocí Dirichletových okrajových podmínek. Pro případ obdelníku, jehož šířka je $a$ a výška $b$ dostáváme podmínky:
+\begin{subequations}
+\begin{equation}
+X(0)=X(a)=0
+\end{equation}
+\begin{equation}
+Y(0)=Y(b)=0
+\end{equation}
+\end{subequations}
+Obecné řešení tedy je:
+\begin{subequations}
+\begin{equation}
+X(x)=A_1 \sin{(\sqrt{\lambda-\alpha}x)}+B_1 \cos{(\sqrt{\lambda-\alpha}x)}
+\end{equation}
+\begin{equation}
+Y(y)=A_2 \sin{(\sqrt{\alpha}y)}+B_2 \cos{(\sqrt{\alpha}y)}
+\end{equation}
+\end{subequations}
+Po použití podmínek $X(0)=Y(0)=0$ hned vidíme, že $B_1=B_2=0$. Pro podmínku $Y(b)=0$ musí platit, že $\sqrt{\alpha}b=n\pi$, kde $n$ je přirozené číslo, tedy $\alpha=\frac{n^2\pi^2}{b^2}$. Stejným způsobem vyjádříme $\lambda$ za pomocí podmínky $X(a)=0$ a po dosazení $\alpha$ pro $m$ a $n$ přirozená čísla dostaneme vlastní čísla:
+\begin{equation}
+\lambda_{m,n}=\frac{m^2\pi^2}{a^2}+\frac{n^2\pi^2}{b^2}
+\end{equation}
+a vlastní vektory:
+\begin{equation}
+u(x,y)_{m,n}=A\sin{(\frac{m\pi}{a}x)}\sin{(\frac{n\pi}{b}y)}
+\end{equation}
+\end{document}
