@@ -23,7 +23,7 @@ Povíme něco o spektrální metodě jako takové.
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Trám na jiný způsob - kód}
+\frametitle{Trám na jiný způsob - Kód}
 \begin{lstlisting}[language=Matlab, basicstyle=\small, numbers=left,breaklines=true]
 f = @(x) 75*9.81*exp(-x.^2/(2*0.01)); alpha = 0; beta = 0; gama = 0 ;delta = 0; n = 18; E = 9.4*10^6; Izz = 3;l = 10;X = [-l/2,l/2];
 L = E*Izz*diffmat([n n+4],4,X);
@@ -40,7 +40,7 @@ plot(chebfun(-u,X),'.-');ylim([-0.001 0.001])
 \end{frame}
 
 \begin{frame}
-\frametitle{Trám na jiný způsob - obrázky}
+\frametitle{Trám na jiný způsob - Obrázky}
 \centering
 \begin{figure}
 \includegraphics[width=.9\linewidth]{První.png}
@@ -50,9 +50,114 @@ plot(chebfun(-u,X),'.-');ylim([-0.001 0.001])
 \end{frame}
 
 \begin{frame}
-\frametitle{Kmitání membrán - Jak vypadá obdélník?}
+\frametitle{Kmitání membrán - Analytický rozbor}
+\begin{equation}
+\Delta u=-\lambda u
+\end{equation}
+\begin{equation}
+u(x,y)=X(x) Y(y)
+\end{equation}
+\begin{equation}
+   \frac{\partial^2 X}{\partial x^2} Y
+      + X \frac{\partial^2 Y}{\partial y^2}=-\lambda X Y
+\end{equation}
+\begin{equation}
+X(0)=X(a)=0
+\end{equation}
+\begin{equation}
+Y(0)=Y(b)=0
+\end{equation}
+\begin{equation}
+X(x)=A_1 \sin{(\sqrt{\lambda-\alpha}x)}+B_1 \cos{(\sqrt{\lambda-\alpha}x)}
+\end{equation}
+\begin{equation}
+Y(y)=A_2 \sin{(\sqrt{\alpha}y)}+B_2 \cos{(\sqrt{\alpha}y)}
+\end{equation}
+\begin{equation}
+\lambda_{m,n}=\frac{m^2\pi^2}{a^2}+\frac{n^2\pi^2}{b^2}
+\end{equation}
+\begin{equation}
+u(x,y)_{m,n}=A\sin{(\frac{m\pi}{a}x)}\sin{(\frac{n\pi}{b}y)}
+\end{equation}
 \end{frame}
 
+\begin{frame}
+\frametitle{Kmitání membrán - Analytický rozbor}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Numerické řešení}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 1. část}
+\centering
+\begin{figure}
+\includegraphics[width=1\linewidth]{obdelnicky1.png}
+\includegraphics[width=1\linewidth]{obdelnicky2.png}
+\caption{Získáno v Matlabu}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 2. část}
+\centering
+\begin{figure}
+\includegraphics[width=1\linewidth]{obdelnicky3.png}
+\includegraphics[width=1\linewidth]{obdelnicky4.png}
+\caption{Získáno v Matlabu}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 3. část}
+\centering
+\begin{figure}
+\includegraphics[width=1\linewidth]{obdelnicky5.png}
+\includegraphics[width=1\linewidth]{obdelnicky6.png}
+\caption{Získáno v Matlabu}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 4. část}
+\centering
+\begin{figure}
+\includegraphics[width=1\linewidth]{obdelnicky7.png}
+\includegraphics[width=1\linewidth]{obdelnicky8.png}
+\caption{Získáno v Matlabu}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 5. část}
+\centering
+\begin{figure}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-1.png}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-2.png}
+\caption{Získáno v Mathematice}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 6. část}
+\centering
+\begin{figure}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-3.png}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-4.png}
+\caption{Získáno v Mathematice}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 5. část}
+\centering
+\begin{figure}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-5.png}
+\includegraphics[width=.6\linewidth]{rectangle-eigenvector-6.png}
+\caption{Získáno v Mathematice}
+\end{figure}
+\end{frame}
 
 \begin{frame}
 \begin{center}
