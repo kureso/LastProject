@@ -6,6 +6,6 @@ rhs = [gridsample(f,n); alpha; beta; gama; delta];
 u = A\rhs;
 tiledlayout(2,1)
 nexttile
-plot(chebfun(-u),'.-');ylim([-1 1]);
+plot(chebfun(-u,X),'.-');ylim([-1 1]);
 nexttile
-plot(chebfun(-u),'.-');ylim([-0.001 0.001])
+plot(chebfun(-u,X),'.-');ylim([-0.001 0.001])
