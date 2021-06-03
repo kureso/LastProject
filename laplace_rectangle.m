@@ -84,4 +84,4 @@ for i = 1:16
 end
 
 % Print eigenvalues
-LaplaceEigenvalues(1:16)
+vpa(LaplaceEigenvalues(1:16))
