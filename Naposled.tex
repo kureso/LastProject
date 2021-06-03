@@ -10,6 +10,7 @@
 \usepackage{units}
 \usepackage{tensor}
 \usepackage{accents}
+\renewcommand{\figurename}{}
 \graphicspath{ {./figures/} }
 \title{Aplikace spektrální metody}
 \author{Dominika Hájková, Matyáš Fuksa, Ondřej Kureš}
@@ -22,20 +23,27 @@
 \frame{\titlepage}
 \begin{frame}
 \frametitle{Spektrální metoda - Co to je?}
+\textit{Popis spektrální metody byl převzat z práce Polynomial approximation and spectral methods (autoři: Vít Průša a Karel Tůma). Zde je popis stručně převyprávěn.}
+\pause
+
 Byla nám dána obyčejná diferenciální rovnice
+\pause
 \begin{equation*}
 \frac{1}{5}\frac{d^2u}{dx^2}+\frac{du}{dx}+u=f(x),
 \end{equation*}
+\pause
 a musíme najít řešení u(x) na intervalu $(-1,1)$ s okrajovými podmínkami
 \begin{align*}
 \left. u \right|_{x=-1} &= \alpha, \\
 \left. u' \right|_{x=1} &= \beta.
 \end{align*}
+\pause
 Spektrální metodu použijeme takto: Místo, abychom řešili rovnici pro všechna $x \in (-1,1)$, budeme ji jen řešit pro určité interpolační body $\left\{ x_j \right\}_{j=1}^{N+2}$. Tyto interpolační body budou Čebyševovy body. 
 \end{frame}
 
 \begin{frame}
 \frametitle{Spektrální metoda - Co to je? - pokračování}
+Diferenciální rovnici z minulé strany pak přepíšeme na diskrétní verzi
 \begin{equation*}
   \left(
     \frac{1}{5}
@@ -50,8 +58,9 @@ Spektrální metodu použijeme takto: Místo, abychom řešili rovnici pro všec
   \vec{f}_{N + 2}
   ,
 \end{equation*}
+\pause
+kde
 \begin{equation*}
-  \label{eq:55}
   \vec{u}_{N + 2}
   =_{def}
   \begin{bmatrix}
@@ -72,8 +81,18 @@ Spektrální metodu použijeme takto: Místo, abychom řešili rovnici pro všec
     \vdots \\
     f(x_{N + 1}) \\
     f(x_{N + 2})
-  \end{bmatrix}
+  \end{bmatrix}.
 \end{equation*}
+$\mathbb{I}_{\left(N + 2\right) \times \left(N + 2\right)}$ je jednotková matice a $\mathbb{D}_{\left(N + 2\right)\times \left(N + 2\right)}$ je spektrální diferenční matice.
+\end{frame}
+
+\begin{frame}
+\frametitle{Spektrální metoda - Co to je? - pokračování}
+Nově vzniklou diskrétní rovnici upravíme pomocí matice $\mathbb{P}^{N+2,-2}_{N\times(N+2)}$. Tím naši rovnici převzorkujeme na $N$ Čebyševových interpolačních bodů.
+\pause
+Pak přidáme dvě rovnice, které odpovídají okrajovým podmínkám: $u(x_{N})=\alpha$ a $u(x_{1})=\beta$.
+\pause
+Takto jsme získali soustavu $N+2$ rovnic s $N+2$ neznámými, což je pro nás "snadno" řešitelný problém.
 \end{frame}
 
 \begin{frame}
@@ -88,7 +107,7 @@ Spektrální metodu použijeme takto: Místo, abychom řešili rovnici pro všec
 \begin{figure}
 \includegraphics[width=.9\linewidth]{První.png}
 \includegraphics[width=.9\linewidth]{Druhý.png}
-\caption{Musím doplnit}
+\caption{Průhyb trámu}
 \end{figure}
 \end{frame}
 
@@ -132,7 +151,7 @@ kde $m$,$n$ jsou přirozená čísla.
 \end{frame}
 
 \begin{frame}
-\frametitle{Porovnání}
+\frametitle{Kmitání membrán - Porovnání}
 Všechny výsledky jsou pro obdelník s šířkou $a=4$ a výškou $b=2$
 
 \begin{table}[]
@@ -153,16 +172,45 @@ Všechny výsledky jsou pro obdelník s šířkou $a=4$ a výškou $b=2$
 
 \begin{frame}
 \frametitle{Kmitání membrán - Výsledky 1. část}
-\centering
+
 \begin{figure}
-\includegraphics[width=1\linewidth]{obdelnicky1.png}
-\includegraphics[width=1\linewidth]{obdelnicky2.png}
-\caption{Získáno v Matlabu}
+\centering
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{obdelnicky11.png}
+\includegraphics[width=1\linewidth]{obdelnicky12.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=.95\linewidth]{rectangle-eigenvector-1.png}
+\includegraphics[width=.95\linewidth]{rectangle-eigenvector-2.png}
+\end{subfigure}
+\caption{Nalevo - Matlab; Napravo - Mathematica}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Kmitání membrán - Výsledky 2. část}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{obdelnicky21.png}
+\includegraphics[width=1\linewidth]{obdelnicky22.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=.95\linewidth]{rectangle-eigenvector-3.png}
+\includegraphics[width=.95\linewidth]{rectangle-eigenvector-4.png}
+\end{subfigure}
+\caption{Nalevo - Matlab; Napravo - Mathematica}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Kmitání membrán - Výsledky 2. část}
+\frametitle{Kmitání membrán - Výsledky 3. část}
 \centering
 \begin{figure}
 \includegraphics[width=1\linewidth]{obdelnicky3.png}
@@ -172,7 +220,7 @@ Všechny výsledky jsou pro obdelník s šířkou $a=4$ a výškou $b=2$
 \end{frame}
 
 \begin{frame}
-\frametitle{Kmitání membrán - Výsledky 3. část}
+\frametitle{Kmitání membrán - Výsledky 4. část}
 \centering
 \begin{figure}
 \includegraphics[width=1\linewidth]{obdelnicky5.png}
@@ -182,42 +230,12 @@ Všechny výsledky jsou pro obdelník s šířkou $a=4$ a výškou $b=2$
 \end{frame}
 
 \begin{frame}
-\frametitle{Kmitání membrán - Výsledky 4. část}
+\frametitle{Kmitání membrán - Výsledky 5. část}
 \centering
 \begin{figure}
 \includegraphics[width=1\linewidth]{obdelnicky7.png}
 \includegraphics[width=1\linewidth]{obdelnicky8.png}
 \caption{Získáno v Matlabu}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kmitání membrán - Výsledky 5. část}
-\centering
-\begin{figure}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-1.png}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-2.png}
-\caption{Získáno v Mathematice}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kmitání membrán - Výsledky 6. část}
-\centering
-\begin{figure}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-3.png}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-4.png}
-\caption{Získáno v Mathematice}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kmitání membrán - Výsledky 7. část}
-\centering
-\begin{figure}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-5.png}
-\includegraphics[width=.6\linewidth]{rectangle-eigenvector-6.png}
-\caption{Získáno v Mathematice}
 \end{figure}
 \end{frame}
 
