@@ -49,7 +49,7 @@ LaplaceEigenvectors = V(:, Permutation);
 FineNodesX = -2:0.01:2;
 FineNodesY = -1:0.01:1;
 [XGridFine, YGridFine] = meshgrid(FineNodesX, FineNodesY);
-[XGridCoarse, YGridCoarse] = meshgrid(chebpts(NX), chebpts(NY));
+[XGridCoarse, YGridCoarse] = meshgrid(chebpts(NX,Xdom), chebpts(NY));
 
 % We are not in a cirque
 tiledlayout(4,4) 
@@ -84,4 +84,4 @@ for i = 1:16
 end
 
 % Print eigenvalues
-vpa(LaplaceEigenvalues(1:16))
+LaplaceEigenvalues(1:16)
